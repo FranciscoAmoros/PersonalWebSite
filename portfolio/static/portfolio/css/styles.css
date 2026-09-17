@@ -1,0 +1,317 @@
+:root {
+
+    --dark-bg: #0f172a;
+    --dark-text: #e2e8f0;
+    --dark-heading: #f8fafc;
+    --dark-card: #1e293b;
+    --dark-border: #334155;
+    --dark-border-hover: #475569;
+    --dark-secondary: #94a3b8;
+    --dark-card-text: #cbd5e1;
+    --primary: #38bdf8;
+    --primary-hover: #0ea5e9;
+
+    --light-bg: #F1F4F6;
+    --light-text: #3F4A52;
+    --light-header: #7B8D9B;
+    --light-secondary: #71808C;
+    --light-border: #B0A99E;
+    --light-card: #FFFFFF;
+    --light-card-border: #D8DEE2;
+    --light-accent: #EFCF9C;
+    --light-contact: #9CC8F0;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    background-color: var(--dark-bg);
+
+    color: var(--dark-text);
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    font-family: 'Poppins', sans-serif;
+
+}
+
+h1, h2, h3 {
+
+    color: var(--dark-heading);
+
+}
+
+.text-secondary {
+
+    color: var(--dark-secondary) !important;
+
+}
+
+
+.list-group-item {
+
+    background-color: var(--dark-card);
+
+    color: var(--dark-text);
+
+    border-color: var(--dark-border);
+
+}
+
+.card {
+
+    background-color: var(--dark-card);
+
+    color: var(--dark-text);
+
+}
+
+.card-text {
+
+    color: var(--dark-card-text) !important;
+
+}
+
+.badge.bg-light {
+
+    background-color: var(--dark-border) !important;
+
+    color: var(--dark-text) !important;
+
+    border-color: var(--dark-border-hover) !important;
+
+}
+
+.btn-dark {
+
+    background-color: var(--primary);
+
+    border-color: var(--primary);
+
+    color: var(--dark-bg);
+
+    font-weight: bold;
+
+}
+
+.btn-dark:hover {
+
+    background-color: var(--primary-hover);
+
+    border-color: var(--primary-hover);
+
+}
+
+#theme-toggle {
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+
+}
+
+#theme-toggle:hover {
+
+    transform: scale(1.2);
+
+}
+
+.row.align-items-stretch {
+
+    align-items: stretch;
+
+}
+
+.skills-container,
+
+.photo-container {
+
+    height: 400px;
+
+}
+
+
+.photo-container {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 400px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+}
+
+.photo-container img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+}
+
+
+
+body.light-mode {
+
+    background-color: var(--light-bg);
+
+    color: var(--light-text);
+
+}
+
+
+
+body.light-mode header {
+
+    background-color: var(--light-header) !important;
+
+}
+
+body.light-mode .navbar-brand {
+
+    color: white;
+
+}
+
+body.light-mode .nav-link {
+
+    color: white;
+
+}
+
+body.light-mode .nav-link:hover {
+
+    color: var(--light-accent);
+
+}
+
+
+
+
+body.light-mode h1,
+
+body.light-mode h2,
+
+body.light-mode h3 {
+
+    color: var(--light-text);
+
+}
+
+body.light-mode .text-secondary {
+
+    color: var(--light-secondary) !important;
+
+}
+
+
+
+body.light-mode .list-group-item {
+
+    background-color: transparent;
+
+    color: var(--light-text);
+
+    border-color: var(--light-border);
+
+}
+
+
+
+body.light-mode .card {
+
+    background-color: var(--light-card);
+
+    color: var(--light-text);
+
+    border: 1px solid var(--light-card-border) !important;
+
+}
+
+body.light-mode .card-text {
+
+    color: var(--light-secondary) !important;
+
+}
+
+
+
+
+body.light-mode .btn-dark {
+
+    background-color: var(--light-text);
+
+    border-color: var(--light-text);
+
+    color: white;
+
+}
+
+body.light-mode .btn-dark:hover {
+
+    background-color: var(--light-header);
+
+    border-color: var(--light-header);
+
+}
+
+
+
+body.light-mode #contacto {
+
+    background-color: var(--light-contact);
+
+}
+
+body.light-mode #contacto a {
+
+    color: var(--light-text) !important;
+
+}
+
+body.light-mode #contacto span {
+
+    color: var(--light-text) !important;
+
+}
+
+
+
+body.light-mode footer {
+
+    background-color: var(--light-header) !important;
+
+    color: white !important;
+
+}
+
+body.light-mode footer .text-secondary {
+
+    color: var(--light-accent) !important;
+
+}
+
+body.light-mode footer a {
+
+    color: white !important;
+
+}
