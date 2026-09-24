@@ -1,0 +1,16 @@
+<h2>Comentarios</h2>
+{% for comment in post.comments.all %}
+  <p><strong>{{ comment.author.username }}</strong>: {{ comment.content }}</p>
+{% empty %}
+  <p>Todavía no hay comentarios.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+  <form method="post" action="{% url 'blog:add_comment' post.pk %}">
+    {% csrf_token %}
+    <textarea name="content" required></textarea>
+    <button type="submit">Comentar</button>
+  </form>
+{% else %}
+  <p><a href="{% url 'login' %}?next={{ request.path }}">Iniciá sesión</a> para comentar.</p>
+{% endif %}

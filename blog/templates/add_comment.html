@@ -1,0 +1,7 @@
+<h1>Comentar en "{{ post.title }}"</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Enviar</button>
+</form>
+<a href="{% url 'blog:post_detail' post.pk %}">Volver</a>
