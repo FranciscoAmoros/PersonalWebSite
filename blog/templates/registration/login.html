@@ -5,3 +5,4 @@
   <input type="hidden" name="next" value="{{ next }}">
   <button type="submit">Entrar</button>
 </form>
+<p>¿No tenés cuenta? <a href="{% url 'blog:register' %}{% if next %}?next={{ next }}{% endif %}">Registrate</a></p>

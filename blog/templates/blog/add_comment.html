@@ -2,6 +2,6 @@
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Enviar</button>
+  <button type="submit">Publicar</button>
 </form>
-<a href="{% url 'blog:post_detail' post.pk %}">Volver</a>
+<a href="{{ post.get_absolute_url }}">Cancelar</a>

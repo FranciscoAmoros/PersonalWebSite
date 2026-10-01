@@ -1,0 +1,21 @@
+<h1>Blog</h1>
+
+{% if user.is_authenticated %}
+  <p>Hola, {{ user.username }}.
+  <form method="post" action="{% url 'logout' %}" style="display:inline">
+    {% csrf_token %}
+    <button type="submit">Salir</button>
+  </form></p>
+{% else %}
+  <a href="{% url 'login' %}?next={{ request.path }}">Iniciar sesión</a>
+{% endif %}
+
+{% for post in posts %}
+  <article>
+    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+    <small>Por {{ post.author }} el {{ post.created_at|date:"d/m/Y" }}</small>
+    <p>{{ post.content|truncatewords:40 }}</p>
+  </article>
+{% empty %}
+  <p>Todavía no hay posts.</p>
+{% endfor %}

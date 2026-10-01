@@ -1,40 +1,51 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
-from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView
-from .models import Post, Comment
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Post
+from .forms import CommentForm
+
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
-class PostListView(ListView):
-    model = Post
-    template_name = 'blog/post_list.html'
-    context_object_name = 'posts'
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # lo deja logueado al registrarse
+            return redirect(request.POST.get("next") or "blog:post_list")
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/register.html", {
+        "form": form,
+        "next": request.GET.get("next", ""),
+    })
 
 
-class PostDetailView(DetailView):
-    model = Post
-    template_name = 'blog/post_detail.html'
-    context_object_name = 'post'
+def post_list(request):
+    posts = Post.objects.filter(published=True)
+    return render(request, "blog/post_list.html", {"posts": posts})
 
 
-class AddCommentView(LoginRequiredMixin, CreateView):
-    model = Comment
-    fields = ['content']
-    template_name = 'blog/add_comment.html'
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug, published=True)
+    return render(request, "blog/post_detail.html", {
+        "post": post,
+        "comments": post.comments.select_related("author"),
+    })
 
-    def dispatch(self, request, *args, **kwargs):
-        self.post_obj = get_object_or_404(Post, pk=kwargs['pk'])
-        return super().dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['post'] = self.post_obj
-        return context
-
-    def form_valid(self, form):
-        form.instance.post = self.post_obj
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('blog:post_detail', kwargs={'pk': self.post_obj.pk})
+@login_required
+def add_comment(request, slug):
+    post = get_object_or_404(Post, slug=slug, published=True)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect(post)
+    else:
+        form = CommentForm()
+    return render(request, "blog/add_comment.html", {"form": form, "post": post})

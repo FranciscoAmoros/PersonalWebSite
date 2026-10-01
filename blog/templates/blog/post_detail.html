@@ -1,0 +1,18 @@
+<a href="{% url 'blog:post_list' %}">← Volver</a>
+<h1>{{ post.title }}</h1>
+<small>Por {{ post.author }} el {{ post.created_at|date:"d/m/Y" }}</small>
+<div>{{ post.content|linebreaks }}</div>
+
+<hr>
+<h3>Comentarios ({{ comments|length }})</h3>
+{% for c in comments %}
+  <p><strong>{{ c.author }}</strong> · {{ c.created_at|date:"d/m/Y H:i" }}<br>{{ c.text }}</p>
+{% empty %}
+  <p>Sé el primero en comentar.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+  <a href="{% url 'blog:add_comment' post.slug %}">Agregar comentario</a>
+{% else %}
+  <a href="{% url 'login' %}?next={% url 'blog:add_comment' post.slug %}">Iniciá sesión para comentar</a>
+{% endif %}
