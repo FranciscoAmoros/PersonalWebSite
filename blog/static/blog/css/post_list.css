@@ -1,6 +1,4 @@
-/* =========================
-   BLOG
-========================= */
+
 
 .blog-main {
     max-width: 1000px;
@@ -8,8 +6,6 @@
     padding: 70px 20px 90px;
 }
 
-
-/* Encabezado */
 
 .blog-header {
     text-align: center;
@@ -29,7 +25,6 @@
 }
 
 
-/* Usuario */
 
 .user-section {
     background-color: #1e293b;
@@ -67,7 +62,6 @@
 }
 
 
-/* Botón cerrar sesión */
 
 .logout-btn {
     background-color: transparent;
@@ -85,8 +79,6 @@
 }
 
 
-/* Contenedor de posts */
-
 .posts-container {
     display: flex;
     flex-direction: column;
@@ -94,7 +86,6 @@
 }
 
 
-/* Tarjeta */
 
 .post-card {
     background-color: #1e293b;
@@ -112,7 +103,6 @@
 }
 
 
-/* Título del post */
 
 .post-card h2 {
     margin: 0 0 10px;
@@ -130,7 +120,6 @@
 }
 
 
-/* Información del post */
 
 .post-meta {
     display: flex;
@@ -151,7 +140,6 @@
 }
 
 
-/* Texto */
 
 .post-card p {
     color: #cbd5e1;
@@ -160,7 +148,6 @@
 }
 
 
-/* Leer más */
 
 .read-more {
     display: inline-flex;
@@ -180,7 +167,6 @@
 }
 
 
-/* Sin posts */
 
 .empty-posts {
     text-align: center;
@@ -234,4 +220,135 @@
         flex-direction: column;
         gap: 7px;
     }
+}
+
+.post-card {
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+
+body.light-mode .blog-main {
+    color: #1e293b;
+}
+
+
+body.light-mode .blog-header p {
+    color: #64748b;
+}
+
+
+
+body.light-mode .user-section {
+    background-color: #ffffff;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .user-info span,
+body.light-mode .login-info span {
+    color: #475569;
+}
+
+body.light-mode .user-info strong {
+    color: #1e293b;
+}
+
+body.light-mode .login-info a {
+    color: #2563eb;
+}
+
+body.light-mode .login-info a:hover {
+    color: #1d4ed8;
+}
+
+
+
+body.light-mode .logout-btn {
+    color: #dc2626;
+    border-color: #ef4444;
+}
+
+body.light-mode .logout-btn:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+
+
+body.light-mode .post-card {
+    background-color: #ffffff;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .post-card:hover {
+    border-color: #94a3b8;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .post-card h2 a {
+    color: #1e293b;
+}
+
+body.light-mode .post-card h2 a:hover {
+    color: #2563eb;
+}
+
+
+body.light-mode .post-meta {
+    color: #64748b;
+}
+
+body.light-mode .post-meta i {
+    color: #2563eb;
+}
+
+body.light-mode .post-card p {
+    color: #475569;
+}
+
+
+
+body.light-mode .read-more {
+    color: #2563eb;
+}
+
+body.light-mode .read-more:hover {
+    color: #1d4ed8;
+}
+
+
+body.light-mode .empty-posts {
+    background-color: #ffffff;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .empty-posts i {
+    color: #94a3b8;
+}
+
+body.light-mode .empty-posts h2 {
+    color: #1e293b;
+}
+
+body.light-mode .empty-posts p {
+    color: #64748b;
+}
+
+.post-card p {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 20px;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }

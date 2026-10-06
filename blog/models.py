@@ -10,6 +10,16 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=True)
+    imagen = models.ImageField(
+        upload_to="posts/",
+        blank=True,
+        null=True
+    )
+    imagen_detail = models.ImageField(
+        upload_to="posts/",
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ["-created_at"]

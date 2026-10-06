@@ -1,18 +1,213 @@
-<a href="{% url 'blog:post_list' %}">← Volver</a>
-<h1>{{ post.title }}</h1>
-<small>Por {{ post.author }} el {{ post.created_at|date:"d/m/Y" }}</small>
-<div>{{ post.content|linebreaks }}</div>
+{% load static %}
 
-<hr>
-<h3>Comentarios ({{ comments|length }})</h3>
-{% for c in comments %}
-  <p><strong>{{ c.author }}</strong> · {{ c.created_at|date:"d/m/Y H:i" }}<br>{{ c.text }}</p>
-{% empty %}
-  <p>Sé el primero en comentar.</p>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="es">
 
-{% if user.is_authenticated %}
-  <a href="{% url 'blog:add_comment' post.slug %}">Agregar comentario</a>
-{% else %}
-  <a href="{% url 'login' %}?next={% url 'blog:add_comment' post.slug %}">Iniciá sesión para comentar</a>
-{% endif %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ post.title }} | Blog</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link href="{% static 'portfolio/css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'blog/css/post_detail.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <header class="navbar navbar-expand-lg bg-dark navbar-dark px-4 py-3">
+
+            <div class="container">
+
+                <p class="navbar-brand fw-bold mb-0">
+                    Francisco Amorós
+                </p>
+
+                <nav>
+                    <ul class="nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'portfolio_home' %}">
+                                Portfolio
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blog:post_list' %}">
+                                Blog
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-3">
+                            <button id="theme-toggle"
+                                    class="btn p-0 border-0 bg-transparent">
+                                ☀️
+                            </button>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </header>
+
+        <main class="post-detail-main">
+
+            <article class="post-detail">
+
+                <a href="{% url 'blog:post_list' %}" class="back-link">
+                    <i class="bi bi-arrow-left"></i>
+                    Volver al blog
+                </a>
+
+                <h1 class="post-detail-title">
+                    {{ post.title }}
+                </h1>
+
+
+                <div class="post-detail-meta">
+
+                    <span>
+                        <i class="bi bi-person"></i>
+                        {{ post.author }}
+                    </span>
+
+                    <span>
+                        <i class="bi bi-calendar3"></i>
+                        {{ post.created_at|date:"d/m/Y" }}
+                    </span>
+
+                </div>
+
+                {% if post.imagen_detail %}
+                    <img
+                        src="{{ post.imagen_detail.url }}"
+                        alt="{{ post.title }}"
+                        class="post-detail-image"
+                    >
+                {% endif %}
+
+
+
+                <div class="post-detail-content">
+                    {{ post.content|linebreaks }}
+                </div>
+
+                <hr>
+
+                <section class="comments-section">
+
+                    <h2>
+                        <i class="bi bi-chat-left-text"></i>
+                        Comentarios ({{ comments|length }})
+                    </h2>
+
+
+                    {% for c in comments %}
+
+                        <div class="comment">
+
+                            <div class="comment-header">
+
+                                <strong>
+                                    {{ c.author }}
+                                </strong>
+
+                                <span>
+                                    {{ c.created_at|date:"d/m/Y H:i" }}
+                                </span>
+
+                            </div>
+
+                            <p>
+                                {{ c.text }}
+                            </p>
+
+                        </div>
+
+                    {% empty %}
+
+                        <div class="no-comments">
+
+                            <i class="bi bi-chat-square-text"></i>
+
+                            <p>
+                                Sé el primero en comentar.
+                            </p>
+
+                        </div>
+
+                    {% endfor %}
+
+
+                    <div class="comment-action">
+
+                        {% if user.is_authenticated %}
+
+                            <a href="{% url 'blog:add_comment' post.slug %}"
+                               class="comment-btn">
+                                <i class="bi bi-plus-lg"></i>
+                                Agregar comentario
+                            </a>
+
+                        {% else %}
+
+                            <a href="{% url 'login' %}?next={% url 'blog:add_comment' post.slug %}"
+                               class="comment-btn">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                Iniciá sesión para comentar
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                </section>
+
+            </article>
+
+        </main>
+
+
+        <footer class="bg-dark text-white text-center py-4">
+
+            <div class="container">
+
+                <p class="mb-1 fw-bold">
+                    Francisco Amorós
+                </p>
+
+                <p class="mb-2 text-secondary">
+                    Desarrollador Junior | Blog
+                </p>
+
+                <p class="mb-0 text-secondary">
+                    © 2026 Francisco Amorós. Todos los derechos reservados.
+                </p>
+
+            </div>
+
+        </footer>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'portfolio/js/main.js' %}"></script>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+
+
+.post-detail-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px 90px;
+}
+
+
+
+.post-detail {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 40px 45px;
+}
+
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+
+    margin-bottom: 30px;
+
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.back-link:hover {
+    color: #93c5fd;
+    gap: 10px;
+}
+
+
+.post-detail-title {
+    color: #f8fafc;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    margin: 0 0 18px;
+}
+
+
+
+.post-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    color: #94a3b8;
+    font-size: 14px;
+
+    margin-bottom: 35px;
+}
+
+.post-detail-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.post-detail-meta i {
+    color: #60a5fa;
+}
+
+
+.post-detail-content {
+    color: #cbd5e1;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.post-detail-content p {
+    margin-bottom: 20px;
+}
+
+
+.post-detail hr {
+    border-color: #334155;
+    margin: 45px 0;
+}
+
+
+
+.comments-section h2 {
+    color: #f8fafc;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.comments-section h2 i {
+    color: #60a5fa;
+    margin-right: 7px;
+}
+
+
+
+.comment {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    padding: 18px 20px;
+    margin-bottom: 15px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.comment-header strong {
+    color: #f8fafc;
+}
+
+.comment-header span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.comment p {
+    color: #cbd5e1;
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+
+.no-comments {
+    text-align: center;
+
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    padding: 35px 20px;
+}
+
+.no-comments i {
+    font-size: 35px;
+    color: #64748b;
+}
+
+.no-comments p {
+    color: #94a3b8;
+    margin: 10px 0 0;
+}
+
+
+.comment-action {
+    margin-top: 25px;
+}
+
+.comment-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background-color: #2563eb;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 9px 16px;
+
+    border-radius: 7px;
+
+    font-weight: 500;
+
+    transition: background-color 0.2s ease;
+}
+
+.comment-btn:hover {
+    background-color: #1d4ed8;
+    color: white;
+}
+
+
+
+body.light-mode .post-detail {
+    background-color: #ffffff;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .back-link {
+    color: #2563eb;
+}
+
+body.light-mode .back-link:hover {
+    color: #1d4ed8;
+}
+
+body.light-mode .post-detail-title {
+    color: #1e293b;
+}
+
+body.light-mode .post-detail-meta {
+    color: #64748b;
+}
+
+body.light-mode .post-detail-meta i {
+    color: #2563eb;
+}
+
+body.light-mode .post-detail-content {
+    color: #475569;
+}
+
+body.light-mode .post-detail hr {
+    border-color: #cbd5e1;
+}
+
+body.light-mode .comments-section h2 {
+    color: #1e293b;
+}
+
+body.light-mode .comments-section h2 i {
+    color: #2563eb;
+}
+
+body.light-mode .comment {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .comment-header strong {
+    color: #1e293b;
+}
+
+body.light-mode .comment-header span {
+    color: #64748b;
+}
+
+body.light-mode .comment p {
+    color: #475569;
+}
+
+body.light-mode .no-comments {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .no-comments i {
+    color: #94a3b8;
+}
+
+body.light-mode .no-comments p {
+    color: #64748b;
+}
+
+.post-detail-content {
+    color: #cbd5e1;
+    font-size: 17px;
+    line-height: 1.8;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+@media (max-width: 600px) {
+
+    .post-detail-main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 30px 90px;
+    }
+
+    .post-detail {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 14px;
+        padding: 40px 45px;
+        overflow: hidden;
+    }
+
+    .post-detail-title {
+        font-size: 32px;
+    }
+
+    .post-detail-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+
+    .post-detail-content {
+        font-size: 16px;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}

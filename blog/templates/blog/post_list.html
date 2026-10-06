@@ -72,7 +72,14 @@
             <section class="posts-container">
 
                 {% for post in posts %}
+
                     <article class="post-card">
+
+                        {% if post.imagen %}
+                            <img src="{{ post.imagen.url }}"
+                                alt="{{ post.title }}"
+                                class="post-image">
+                        {% endif %}
 
                         <div class="post-content">
 
@@ -125,7 +132,7 @@
             <div class="container">
                 <p class="mb-1 fw-bold">Francisco Amorós</p>
                 <p class="mb-2 text-secondary">
-                    Desarrollador Junior | Portfolio
+                    Desarrollador Junior | Blog
                 </p>
 
                 <div class="mb-3">
