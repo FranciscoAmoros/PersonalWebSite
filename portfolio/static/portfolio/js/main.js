@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // --- Video con imagen de respaldo ---
     const video = document.getElementById("videoSlither");
     const imagen = document.getElementById("imagenSlither");
 
@@ -9,16 +10,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // --- Tema claro/oscuro (se guarda entre páginas) ---
     const boton = document.getElementById("theme-toggle");
+
+    function aplicarTema(claro) {
+        document.body.classList.toggle("light-mode", claro);
+        if (boton) {
+            boton.textContent = claro ? "🌙" : "☀️";
+        }
+    }
+
+    // Al cargar: usar el tema guardado
+    let temaGuardado = null;
+    try {
+        temaGuardado = localStorage.getItem("theme");
+    } catch (e) {}
+    aplicarTema(temaGuardado === "light");
+
+    // Al hacer click: cambiar y guardar
     if (boton) {
         boton.addEventListener("click", function () {
-            document.body.classList.toggle("light-mode");
-
-            if (document.body.classList.contains("light-mode")) {
-                boton.textContent = "🌙";
-            } else {
-                boton.textContent = "☀️";
-            }
+            const claro = !document.body.classList.contains("light-mode");
+            try {
+                localStorage.setItem("theme", claro ? "light" : "dark");
+            } catch (e) {}
+            aplicarTema(claro);
         });
     }
 });

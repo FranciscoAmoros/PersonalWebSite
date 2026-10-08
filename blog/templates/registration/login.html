@@ -42,60 +42,60 @@
 
         <main class="login-main">
 
-          <div class="login-section">
+            <div class="login-section">
 
-          {% if form.errors %}
-          <div class="alert alert-danger" role="alert">
-              <strong>Revisá los siguientes errores:</strong>
+                {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Revisá los siguientes errores:</strong>
 
-              <ul class="mb-0 mt-2">
-                  {% for field in form %}
-                      {% for error in field.errors %}
-                          <li>{{ error }}</li>
-                      {% endfor %}
-                  {% endfor %}
+                    <ul class="mb-0 mt-2">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
 
-                  {% for error in form.non_field_errors %}
-                      <li>{{ error }}</li>
-                  {% endfor %}
-              </ul>
-          </div>
-          {% endif %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
 
-              <h1>Iniciar sesión</h1>
+                <h1>Iniciar sesión</h1>
 
-              <form method="post">
-                  {% csrf_token %}
+                <form method="post">
+                    {% csrf_token %}
 
-                  <div class="mb-3 text-start">
-                      <label for="{{ form.username.id_for_label }}" class="form-label">
-                          Usuario
-                      </label>
-                      {{ form.username }}
-                  </div>
+                        <div class="mb-3 text-start">
+                            <label for="{{ form.username.id_for_label }}" class="form-label">
+                                Usuario
+                            </label>
+                            {{ form.username }}
+                        </div>
 
-                  <div class="mb-3 text-start">
-                      <label for="{{ form.password.id_for_label }}" class="form-label">
-                          Contraseña
-                      </label>
-                      {{ form.password }}
-                  </div>
+                        <div class="mb-3 text-start">
+                            <label for="{{ form.password.id_for_label }}" class="form-label">
+                                Contraseña
+                            </label>
+                            {{ form.password }}
+                        </div>
 
-                  <input type="hidden" name="next" value="{{ next }}">
+                        <input type="hidden" name="next" value="{{ next }}">
 
-                  <button type="submit" class="btn btn-primary">
-                      Entrar
-                  </button>
-              </form>
+                        <button type="submit" class="btn btn-primary">
+                            Entrar
+                        </button>
+                    </form>
 
-              <p class="register-text">
-                  ¿No tenés cuenta?
-                  <a href="{% url 'blog:register' %}{% if next %}?next={{ next }}{% endif %}">
-                      Registrate
-                  </a>
-              </p>
+                    <p class="register-text">
+                        ¿No tenés cuenta?
+                        <a href="{% url 'blog:register' %}{% if next %}?next={{ next }}{% endif %}">
+                            Registrate
+                        </a>
+                    </p>
 
-          </div>
+            </div>
 
 
         </main>

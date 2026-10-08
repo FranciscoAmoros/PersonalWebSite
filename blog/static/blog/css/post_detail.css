@@ -1,18 +1,37 @@
 
-
 .post-detail-main {
+    width: 100%;
     max-width: 900px;
     margin: 0 auto;
     padding: 60px 20px 90px;
+    box-sizing: border-box;
 }
 
+.post-detail img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    object-fit: contain;
+}
 
+.post-detail,
+.post-detail-content {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
 
-.post-detail {
-    background-color: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 14px;
-    padding: 40px 45px;
+.post-detail-content img {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    border-radius: 10px;
+    margin: 25px 0;
 }
 
 
@@ -270,21 +289,26 @@ body.light-mode .no-comments p {
 @media (max-width: 600px) {
 
     .post-detail-main {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 60px 30px 90px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 30px 15px 60px;
+        box-sizing: border-box;
     }
 
     .post-detail {
-        background-color: #1e293b;
-        border: 1px solid #334155;
-        border-radius: 14px;
-        padding: 40px 45px;
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 25px 20px;
+        border-radius: 12px;
+
         overflow: hidden;
     }
 
     .post-detail-title {
         font-size: 32px;
+        word-break: break-word;
     }
 
     .post-detail-meta {
@@ -296,6 +320,14 @@ body.light-mode .no-comments p {
 
     .post-detail-content {
         font-size: 16px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .post-detail-content img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
     }
 
     .comment-header {
@@ -303,4 +335,18 @@ body.light-mode .no-comments p {
         align-items: flex-start;
         gap: 5px;
     }
+}
+
+.comment p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.comment {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.comment-header strong {
+    overflow-wrap: anywhere;
 }
